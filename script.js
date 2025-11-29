@@ -7,6 +7,7 @@ const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
 const divAnswers = document.querySelector(".answers");
 const scoreDisplay = document.createElement("div");
+scoreDisplay.id = "score";
 scoreDisplay.textContent = `Score: Player ${playerScore} | Computer ${computerScore}`;
 divAnswers.parentNode.insertBefore(scoreDisplay, divAnswers);
 
@@ -72,7 +73,22 @@ function addChoiceListeners() {
     rock.addEventListener("click", () => game("rock"));
     paper.addEventListener("click", () => game("paper"));
     scissors.addEventListener("click", () => game("scissors"));
+    clearBtn.addEventListener("click", resetGame);
+
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    scoreDisplay.textContent = "Score:"
 }
+}
+
+// Clear Button
+const clearBtn = document.createElement("button");
+clearBtn.textContent = "Clear";
+clearBtn.id ="clear-btn";
+document.body.appendChild(scoreDisplay);
+document.body.appendChild(clearBtn);
 
 // Initialize the game listeners
 addChoiceListeners();
+
